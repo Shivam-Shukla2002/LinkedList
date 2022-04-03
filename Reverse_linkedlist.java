@@ -178,16 +178,6 @@ public class Reverse_linkedlist {
         ri--;
       }
     }
-
-    public void reversePI() {
-      // write your code here
-      Node temp = head;
-      for (int i = size; i < 0; i--) {
-        temp = temp.next;
-        display();
-      }
-
-    }
   }
 
   public static void main(String[] args) throws Exception {
