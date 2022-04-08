@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Kth_from_lastLinkedlist {
+public class RemoveAtIndex_linkedlist {
     public static class Node {
         int data;
         Node next;
@@ -138,8 +138,9 @@ public class Kth_from_lastLinkedlist {
         }
 
         public void removeAt(int idx) {
-            if (idx < 0 || idx >= size) {
-                System.out.println("Invalid arguments");
+            // write your code here
+            if (idx < 0 && idx > size) {
+                System.out.println("Invalid arguement");
             } else if (idx == 0) {
                 removeFirst();
             } else if (idx == size - 1) {
@@ -149,68 +150,9 @@ public class Kth_from_lastLinkedlist {
                 for (int i = 0; i < idx - 1; i++) {
                     temp = temp.next;
                 }
-
                 temp.next = temp.next.next;
                 size--;
             }
-        }
-
-        private Node getNodeAt(int idx) {
-            Node temp = head;
-            for (int i = 0; i < idx; i++) {
-                temp = temp.next;
-            }
-            return temp;
-        }
-
-        public void reverseDI() {
-            int li = 0;
-            int ri = size - 1;
-            while (li < ri) {
-                Node left = getNodeAt(li);
-                Node right = getNodeAt(ri);
-
-                int temp = left.data;
-                left.data = right.data;
-                right.data = temp;
-
-                li++;
-                ri--;
-            }
-        }
-
-        public void reversePI() {
-            if (size <= 1) {
-                return;
-            }
-
-            Node prev = null;
-            Node curr = head;
-            while (curr != null) {
-                Node next = curr.next;
-
-                curr.next = prev;
-                prev = curr;
-                curr = next;
-            }
-
-            Node temp = head;
-            head = tail;
-            tail = temp;
-        }
-
-        public int kthFromLast(int k) {
-            // write your code here
-            Node slow = head;
-            Node fast = head;
-            for (int i = 0; i < k - 1; i++) {
-                fast = fast.next;
-            }
-            while (fast != tail) {
-                fast = fast.next;
-                slow = slow.next;
-            }
-            return slow.data;
         }
     }
 
@@ -257,13 +199,6 @@ public class Kth_from_lastLinkedlist {
             } else if (str.startsWith("removeAt")) {
                 int idx = Integer.parseInt(str.split(" ")[1]);
                 list.removeAt(idx);
-            } else if (str.startsWith("reverseDI")) {
-                list.reverseDI();
-            } else if (str.startsWith("reversePI")) {
-                list.reversePI();
-            } else if (str.startsWith("kthFromEnd")) {
-                int idx = Integer.parseInt(str.split(" ")[1]);
-                System.out.println(list.kthFromLast(idx));
             }
             str = br.readLine();
         }

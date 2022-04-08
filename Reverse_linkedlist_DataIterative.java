@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Reverse_linkedlist {
+public class Reverse_linkedlist_DataIterative {
   public static class Node {
     int data;
     Node next;
@@ -161,11 +161,14 @@ public class Reverse_linkedlist {
         temp = temp.next;
       }
       return temp;
+
     }
 
     public void reverseDI() {
+      // write your code here
       int li = 0;
       int ri = size - 1;
+
       while (li < ri) {
         Node left = getNodeAt(li);
         Node right = getNodeAt(ri);
@@ -176,6 +179,7 @@ public class Reverse_linkedlist {
 
         li++;
         ri--;
+
       }
     }
   }
@@ -225,8 +229,6 @@ public class Reverse_linkedlist {
         list.removeAt(idx);
       } else if (str.startsWith("reverseDI")) {
         list.reverseDI();
-      } else if (str.startsWith("reversePI")) {
-        list.reversePI();
       }
       str = br.readLine();
     }

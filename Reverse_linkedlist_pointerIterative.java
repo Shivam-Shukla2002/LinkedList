@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Kth_from_lastLinkedlist {
+public class Reverse_linkedlist_pointerIterative {
     public static class Node {
         int data;
         Node next;
@@ -180,12 +180,10 @@ public class Kth_from_lastLinkedlist {
         }
 
         public void reversePI() {
-            if (size <= 1) {
-                return;
-            }
-
+            // write your code here
             Node prev = null;
             Node curr = head;
+
             while (curr != null) {
                 Node next = curr.next;
 
@@ -193,24 +191,9 @@ public class Kth_from_lastLinkedlist {
                 prev = curr;
                 curr = next;
             }
-
             Node temp = head;
             head = tail;
             tail = temp;
-        }
-
-        public int kthFromLast(int k) {
-            // write your code here
-            Node slow = head;
-            Node fast = head;
-            for (int i = 0; i < k - 1; i++) {
-                fast = fast.next;
-            }
-            while (fast != tail) {
-                fast = fast.next;
-                slow = slow.next;
-            }
-            return slow.data;
         }
     }
 
@@ -261,9 +244,6 @@ public class Kth_from_lastLinkedlist {
                 list.reverseDI();
             } else if (str.startsWith("reversePI")) {
                 list.reversePI();
-            } else if (str.startsWith("kthFromEnd")) {
-                int idx = Integer.parseInt(str.split(" ")[1]);
-                System.out.println(list.kthFromLast(idx));
             }
             str = br.readLine();
         }
